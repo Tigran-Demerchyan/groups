@@ -1,4 +1,4 @@
-package com.groups;
+package com.groups.model;
 
 import java.util.ArrayList;
 import java.util.List;

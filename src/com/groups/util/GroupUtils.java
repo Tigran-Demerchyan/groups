@@ -1,4 +1,7 @@
-package com.groups;
+package com.groups.util;
+
+import com.groups.model.Group;
+import com.groups.model.Item;
 
 import java.util.List;
 

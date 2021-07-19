@@ -1,4 +1,4 @@
-package com.groups;
+package com.groups.model;
 
 public class Item {
     private String name;
