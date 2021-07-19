@@ -4,12 +4,22 @@ public class Item {
     private String name;
     private double price;
     private String currency;
+    private Group group;
 
-
-    public Item(String name, double price, String currency) {
+    public Item(String name, double price, String currency, Group group) {
         this.name = name;
         this.price = price;
         this.currency = currency;
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 
     public String getName() {
@@ -36,12 +46,11 @@ public class Item {
         this.currency = currency;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", currency='" + currency + '\'' +
-                '}';
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

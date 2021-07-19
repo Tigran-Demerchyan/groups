@@ -1,27 +1,30 @@
 package com.groups;
 
 public class MyMain {
-
     public static void main(String[] args) {
-        Group parentGroup = new Group(0);
 
+        Group jazz = new Group("jazz");
 
-        parentGroup.addItem(new Item("some song", 10, "USD"));
-        parentGroup.addItem(new Item("some song", 12, "USD"));
+        jazz.addGroup(new Group("armenian jazz"));
+        jazz.addGroup(new Group("georgian jazz"));
+        jazz.addItems(new Item("name", 25, "USD", new Group("group")));
 
+        Group rock = new Group("rock");
+        rock.addItems(new Item("SOAD", 500, "USD", new Group("group2")));
+        Group armenianNavyBand = new Group("Armenian Navy Band");
+        rock.addGroup(armenianNavyBand);
+        armenianNavyBand.addGroup(new Group("Arto"));
 
-        Group rock = new Group(1);
-        rock.addItem(new Item("rock 1", 10, "USD"));
-        rock.addItem(new Item("rock 1 ", 44, "USD"));
+        Group classic = new Group("classic");
+        classic.addItems(new Item("Bethoven", 45, "USD", new Group("Motsart")));
+        classic.addGroup(new Group("Bakh"));
 
-        Group jazz = new Group(2);
-        jazz.addItem(new Item("jazz 2 item 1", 2, "USD"));
-        jazz.addItem(new Item("jazz 2 item 2", 44, "USD"));
+        Group parent = new Group("parent");
+        parent.addGroup(jazz);
+        parent.addGroup(rock);
+        parent.addGroup(classic);
 
+        GroupUtils.printAllGroups(parent);
 
-        parentGroup.addGroup(rock);
-        parentGroup.addGroup(jazz);
-
-        GroupUtils.printAllItemsInGroup(parentGroup);
     }
 }

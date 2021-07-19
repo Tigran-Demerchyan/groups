@@ -4,29 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
-
+    public static int idGenerator = 0;
     private int id;
+    private String name;
+    private List<Group> subGroups;
+    private List<Item> items;
+    private Group parent;
 
-    private final List<Group> subGroups;
-    private final List<Item> items;
-
-    public Group(int id){
-        this.id = id;
+    public Group(String name) {
+        this.id = idGenerator++;
+        this.name = name;
         this.subGroups = new ArrayList<>();
         this.items = new ArrayList<>();
     }
 
-    public void addGroup(Group group) {
-        this.subGroups.add(group);
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", subGroups=" + subGroups +
+                ", items=" + items +
+
+                '}';
     }
 
-    public void addItem(Item item) {
-        this.items.add(item);
+    public static int getIdGenerator() {
+        return idGenerator;
     }
-
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public List<Group> getSubGroups() {
@@ -35,5 +47,24 @@ public class Group {
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public Group getParent() {
+        return parent;
+    }
+
+    public void setParent(Group parent) {
+        this.parent = parent;
+    }
+
+    public void addGroup(Group group) {
+        group.setParent(this);
+        this.subGroups.add(group);
+
+    }
+
+    public void addItems(Item item) {
+        item.setGroup(this);
+        this.items.add(item);
     }
 }
